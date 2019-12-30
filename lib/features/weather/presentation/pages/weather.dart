@@ -118,7 +118,7 @@ class _WeatherState extends State<Weather> {
               }
               if (state is WeatherError) {
                 return Text(
-                  'Something went wrong!',
+                  state.error,
                   style: TextStyle(color: Colors.red),
                 );
               }

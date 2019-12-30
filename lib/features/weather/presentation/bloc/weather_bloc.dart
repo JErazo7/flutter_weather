@@ -24,15 +24,15 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
       try {
         final Weather weather = await weatherRepository.getWeather(event.city);
         yield WeatherLoaded(weather: weather);
-      } catch (_) {
-        yield WeatherError();
+      } catch (error) {
+        yield WeatherError(error.toString());
       }
     } else if (event is RefreshWeather) {
       try {
         final Weather weather = await weatherRepository.getWeather(event.city);
         yield WeatherLoaded(weather: weather);
-      } catch (_) {
-        yield WeatherError();
+      } catch (error) {
+        yield WeatherError(error.toString());
       }
     }
   }
