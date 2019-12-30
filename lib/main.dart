@@ -3,12 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
 import 'package:bloc/bloc.dart';
 
+import 'features/bloc.dart';
 import 'features/simple_bloc_delegate.dart';
-import 'features/theme/presentation/bloc/bloc.dart';
+
 import 'features/weather/data/datasources/weather_api_client.dart';
 import 'features/weather/data/repositories/weather_repository_impl.dart';
 import 'features/weather/domain/repositories/weather_repository.dart';
-import 'features/weather/presentation/bloc/bloc.dart';
+
 import 'features/weather/presentation/pages/weather.dart';
 
 void main() {
@@ -20,8 +21,15 @@ void main() {
   );
 
   runApp(
-    BlocProvider(
-      create: (context) => ThemeBloc(),
+    MultiBlocProvider(
+      providers: [
+        BlocProvider<ThemeBloc>(
+          create: (context) => ThemeBloc(),
+        ),
+        BlocProvider<SettingsBloc>(
+          create: (context) => SettingsBloc(),
+        ),
+      ],
       child: App(weatherRepository: weatherRepository),
     ),
   );

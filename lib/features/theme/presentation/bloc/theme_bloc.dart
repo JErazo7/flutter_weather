@@ -6,8 +6,6 @@ import 'package:flutter_weather/features/weather/presentation/bloc/bloc.dart';
 import './bloc.dart';
 
 class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
-  //final WeatherBloc weatherBloc;
-  //StreamSubscription todosSubscription;
   
   @override
   ThemeState get initialState => ThemeState(

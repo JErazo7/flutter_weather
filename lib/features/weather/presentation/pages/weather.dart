@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_weather/core/widgets/gradient_container.dart';
+import 'package:flutter_weather/features/settings/presentation/pages/settings.dart';
 import 'package:flutter_weather/features/theme/presentation/bloc/bloc.dart';
 import 'package:flutter_weather/features/weather/presentation/bloc/bloc.dart';
 import 'package:flutter_weather/features/weather/presentation/widgets/widgets.dart';
@@ -28,6 +29,17 @@ class _WeatherState extends State<Weather> {
       appBar: AppBar(
         title: Text('Flutter Weather'),
         actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.settings),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Settings(),
+                ),
+              );
+            },
+          ),
           IconButton(
             icon: Icon(Icons.search),
             onPressed: () async {
